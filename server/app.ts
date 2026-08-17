@@ -19,8 +19,9 @@ import {
   appIconPublicUrl,
   resolveAppIconPath,
 } from "../shared/app-icon.ts";
+import { bundledAppIconUrl } from "../shared/app-icon-manifest.ts";
 import { pairComparisonFiles } from "../shared/identify-comparison.ts";
-import { resolveRuntimePaths } from "./paths.ts";
+import { resolveRuntimePaths, rootDir } from "./paths.ts";
 import { JsonStore } from "./store.ts";
 
 const { uploadsDir, dbPath, workspaceRoot } = resolveRuntimePaths();
@@ -82,12 +83,23 @@ app.get("/uploads/:filename", (req, res) => {
   res.sendFile(full);
 });
 
+function resolveServedIconPath(appId: string, folder: string): string | null {
+  const bundled = bundledAppIconUrl(appId);
+  if (bundled) {
+    const fromPublic = path.join(rootDir, "public", bundled.replace(/^\//, ""));
+    if (existsSync(fromPublic)) return fromPublic;
+  }
+  return resolveAppIconPath(workspaceRoot, folder);
+}
+
 app.get("/api/apps", (_req, res) => {
   const apps = store.listApps().map((item) => ({
     ...item,
-    iconUrl: resolveAppIconPath(workspaceRoot, item.folder)
-      ? appIconPublicUrl(item.id)
-      : null,
+    iconUrl:
+      bundledAppIconUrl(item.id) ??
+      (resolveAppIconPath(workspaceRoot, item.folder)
+        ? appIconPublicUrl(item.id)
+        : null),
   }));
   res.json({ apps });
 });
@@ -99,7 +111,7 @@ app.get("/api/apps/:appId/icon", (req, res) => {
     res.status(404).json({ error: "App não encontrado." });
     return;
   }
-  const iconPath = resolveAppIconPath(workspaceRoot, found.folder);
+  const iconPath = resolveServedIconPath(appId, found.folder);
   if (!iconPath) {
     res.status(404).json({ error: "Ícone não encontrado." });
     return;
