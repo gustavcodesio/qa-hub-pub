@@ -72,7 +72,7 @@ export const comparisonSchema = z.object({
   sectionId: z.string().nullable(),
   platform: platformSchema,
   appImage: z.string().default(""),
-  figmaImage: z.string(),
+  figmaImage: z.string().default(""),
   listState: listStateSchema.nullable().default(null),
   drawerLabel: z.string().nullable().default(null),
 });

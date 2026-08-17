@@ -85,6 +85,23 @@ export function AppDocPage() {
     onSuccess: invalidate,
   });
 
+  const attachFigma = useMutation({
+    mutationFn: ({ id, form }: { id: string; form: FormData }) =>
+      api.attachComparisonFigmaImage(id, form),
+    onSuccess: invalidate,
+  });
+
+  const clearComparisonImage = useMutation({
+    mutationFn: ({
+      id,
+      side,
+    }: {
+      id: string;
+      side: "appImage" | "figmaImage";
+    }) => api.clearComparisonImage(id, side),
+    onSuccess: invalidate,
+  });
+
   const patchComparison = useMutation({
     mutationFn: ({
       id,
@@ -230,10 +247,16 @@ export function AppDocPage() {
             comparisons={data.comparisons}
             sections={data.sections}
             isEditing={isEditing}
-            attachPending={attachTestflight.isPending}
+            attachPending={
+              attachTestflight.isPending || attachFigma.isPending
+            }
             onRemove={(id) => removeComparison.mutate(id)}
             onAttachTestflight={(id, form) =>
               attachTestflight.mutate({ id, form })
+            }
+            onAttachFigma={(id, form) => attachFigma.mutate({ id, form })}
+            onClearImage={(id, side) =>
+              clearComparisonImage.mutate({ id, side })
             }
             onPatchComparison={(id, patch) =>
               patchComparison.mutate({ id, ...patch })
@@ -473,6 +496,8 @@ function ComparisonGallery({
   attachPending,
   onRemove,
   onAttachTestflight,
+  onAttachFigma,
+  onClearImage,
   onPatchComparison,
 }: {
   comparisons: Comparison[];
@@ -481,6 +506,8 @@ function ComparisonGallery({
   attachPending: boolean;
   onRemove: (id: string) => void;
   onAttachTestflight: (id: string, form: FormData) => void;
+  onAttachFigma: (id: string, form: FormData) => void;
+  onClearImage: (id: string, side: "appImage" | "figmaImage") => void;
   onPatchComparison: (
     id: string,
     patch: { listState?: ListState | null; drawerLabel?: string | null },
@@ -564,7 +591,7 @@ function ComparisonGallery({
                         size="sm"
                         onClick={() => onRemove(item.id)}
                       >
-                        Remover
+                        Remover comparação
                       </Button>
                     </div>
                   ) : null}
@@ -587,6 +614,23 @@ function ComparisonGallery({
                         </p>
                       )}
                     </div>
+                    {isEditing && item.figmaImage ? (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="mt-2"
+                        onClick={() => onClearImage(item.id, "figmaImage")}
+                      >
+                        Remover
+                      </Button>
+                    ) : null}
+                    {isEditing && !item.figmaImage ? (
+                      <AttachImageForm
+                        pending={attachPending}
+                        submitLabel="Enviar Figma"
+                        onSubmit={(form) => onAttachFigma(item.id, form)}
+                      />
+                    ) : null}
                   </figure>
                   <p className="shrink-0 self-center text-center text-lg font-bold tracking-[0.2em] text-muted sm:pt-6">
                     VS
@@ -608,9 +652,20 @@ function ComparisonGallery({
                         </p>
                       )}
                     </div>
+                    {isEditing && item.appImage ? (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="mt-2"
+                        onClick={() => onClearImage(item.id, "appImage")}
+                      >
+                        Remover
+                      </Button>
+                    ) : null}
                     {isEditing && !item.appImage ? (
-                      <AttachTestflightForm
+                      <AttachImageForm
                         pending={attachPending}
+                        submitLabel="Enviar TestFlight"
                         onSubmit={(form) => onAttachTestflight(item.id, form)}
                       />
                     ) : null}
@@ -625,11 +680,13 @@ function ComparisonGallery({
   );
 }
 
-function AttachTestflightForm({
+function AttachImageForm({
   pending,
+  submitLabel,
   onSubmit,
 }: {
   pending: boolean;
+  submitLabel: string;
   onSubmit: (form: FormData) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -654,7 +711,7 @@ function AttachTestflightForm({
         className="max-w-xs text-xs"
       />
       <Button type="submit" size="sm" variant="outline" disabled={pending}>
-        {pending ? "Enviando…" : "Enviar TestFlight"}
+        {pending ? "Enviando…" : submitLabel}
       </Button>
     </form>
   );

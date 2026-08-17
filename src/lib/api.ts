@@ -81,6 +81,18 @@ export const api = {
       method: "POST",
       body: form,
     }),
+  attachComparisonFigmaImage: (id: string, form: FormData) =>
+    request<AppDocument>(`/api/comparisons/${id}/figma-image`, {
+      method: "POST",
+      body: form,
+    }),
+  clearComparisonImage: (id: string, side: "appImage" | "figmaImage") => {
+    const path =
+      side === "figmaImage"
+        ? `/api/comparisons/${id}/figma-image`
+        : `/api/comparisons/${id}/app-image`;
+    return request<AppDocument>(path, { method: "DELETE" });
+  },
   patchComparison: (
     id: string,
     body: { listState?: "empty" | "filled" | null; drawerLabel?: string | null },

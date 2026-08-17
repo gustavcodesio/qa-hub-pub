@@ -1,4 +1,4 @@
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -240,6 +240,30 @@ describe("JsonStore", () => {
       expect(
         store.listLabels().some((item) => item.name === "build quebrado"),
       ).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("remove print do TestFlight e apaga o arquivo órfão", () => {
+    const { store, dir } = tmpStore();
+    try {
+      const uploads = path.join(dir, "uploads");
+      writeFileSync(path.join(uploads, "tf.png"), "tf");
+      writeFileSync(path.join(uploads, "figma.png"), "figma");
+      const created = store.createApp({ name: "Gratos", slug: "gratos" });
+      const added = store.addComparison({
+        appId: created!.id,
+        platform: "ios",
+        appImage: "/uploads/tf.png",
+        figmaImage: "/uploads/figma.png",
+      });
+      const comparisonId = added!.comparisons[0]!.id;
+      const updated = store.clearComparisonImage(comparisonId, "appImage");
+      expect(updated?.comparisons[0]?.appImage).toBe("");
+      expect(updated?.comparisons[0]?.figmaImage).toBe("/uploads/figma.png");
+      expect(existsSync(path.join(uploads, "tf.png"))).toBe(false);
+      expect(existsSync(path.join(uploads, "figma.png"))).toBe(true);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

@@ -339,6 +339,48 @@ app.post(
   },
 );
 
+app.delete("/api/comparisons/:id/app-image", (req, res) => {
+  const doc = store.clearComparisonImage(param(req.params.id), "appImage");
+  if (!doc) {
+    res.status(404).json({ error: "Comparação não encontrada." });
+    return;
+  }
+  res.json(doc);
+});
+
+app.post(
+  "/api/comparisons/:id/figma-image",
+  upload.single("file"),
+  (req, res) => {
+    try {
+      if (!req.file) {
+        res.status(400).json({ error: "Envie uma imagem do Figma." });
+        return;
+      }
+      const doc = store.patchComparisonFigmaImage(
+        param(req.params.id),
+        publicUrl(req.file.filename),
+      );
+      if (!doc) {
+        res.status(404).json({ error: "Comparação não encontrada." });
+        return;
+      }
+      res.json(doc);
+    } catch (err) {
+      sendError(res, err);
+    }
+  },
+);
+
+app.delete("/api/comparisons/:id/figma-image", (req, res) => {
+  const doc = store.clearComparisonImage(param(req.params.id), "figmaImage");
+  if (!doc) {
+    res.status(404).json({ error: "Comparação não encontrada." });
+    return;
+  }
+  res.json(doc);
+});
+
 app.patch("/api/comparisons/:id", (req, res) => {
   try {
     const body = patchComparisonBodySchema.parse(req.body);

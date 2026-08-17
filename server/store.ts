@@ -529,11 +529,30 @@ export class JsonStore {
   }
 
   patchComparisonAppImage(comparisonId: string, appImage: string) {
+    return this.patchComparisonImage(comparisonId, "appImage", appImage);
+  }
+
+  patchComparisonFigmaImage(comparisonId: string, figmaImage: string) {
+    return this.patchComparisonImage(comparisonId, "figmaImage", figmaImage);
+  }
+
+  clearComparisonImage(
+    comparisonId: string,
+    field: "appImage" | "figmaImage",
+  ) {
+    return this.patchComparisonImage(comparisonId, field, "");
+  }
+
+  private patchComparisonImage(
+    comparisonId: string,
+    field: "appImage" | "figmaImage",
+    nextUrl: string,
+  ) {
     const db = this.read();
     const comparison = db.comparisons.find((c) => c.id === comparisonId);
     if (!comparison) return null;
-    const previous = comparison.appImage;
-    comparison.appImage = appImage;
+    const previous = comparison[field];
+    comparison[field] = nextUrl;
     this.write(db);
     this.unlinkIfOrphan(this.read(), previous);
     return this.getAppDocument(comparison.appId);
