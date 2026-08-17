@@ -7,7 +7,7 @@
     "dev": "concurrently -n api,web -c blue,green \"tsx watch server/index.ts\" \"vite\"",
     "dev:api": "tsx watch server/index.ts",
     "dev:web": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/bundle-api.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",

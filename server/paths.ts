@@ -27,8 +27,14 @@ export function resolveRuntimePaths(env: NodeJS.ProcessEnv = process.env) {
   mkdirSync(dataDir, { recursive: true });
   mkdirSync(uploadsDir, { recursive: true });
 
-  if (onVercel && !existsSync(dbPath) && existsSync(seedDbPath)) {
-    copyFileSync(seedDbPath, dbPath);
+  const seed = [
+    seedDbPath,
+    path.join(process.cwd(), "data", "db.json"),
+    path.join("/var/task", "data", "db.json"),
+  ].find((candidate) => existsSync(candidate));
+
+  if (onVercel && !existsSync(dbPath) && seed) {
+    copyFileSync(seed, dbPath);
   }
 
   return { dataDir, uploadsDir, dbPath, workspaceRoot };

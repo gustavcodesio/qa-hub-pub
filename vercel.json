@@ -8,8 +8,8 @@
     }
   ],
   "functions": {
-    "api/index.ts": {
-      "includeFiles": "data/db.json",
+    "api/index.js": {
+      "includeFiles": "data/**",
       "maxDuration": 30
     }
   }
