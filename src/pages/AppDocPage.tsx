@@ -9,7 +9,6 @@ import type {
   Platform,
   Recording,
   Section,
-  Story,
   StoryStatus,
 } from "@/lib/types";
 import { mergeComparisonFiles } from "@shared/identify-comparison";
@@ -116,8 +115,8 @@ export function AppDocPage() {
   });
 
   const addRecording = useMutation({
-    mutationFn: ({ storyId, form }: { storyId: string; form: FormData }) =>
-      api.addRecording(storyId, form),
+    mutationFn: ({ sectionId, form }: { sectionId: string; form: FormData }) =>
+      api.addRecording(sectionId, form),
     onSuccess: invalidate,
   });
 
@@ -270,7 +269,8 @@ export function AppDocPage() {
           Histórias de usuário evidência
         </h2>
         <p className="mt-2 text-sm text-muted">
-          Teste cada história e anexe print ou vídeo do resultado.
+          Marque o status de cada história. O vídeo (ou print) é um por tela e
+          cobre todas as histórias daquela página.
         </p>
         <p className="mt-2 text-sm text-orange-common">
           (obs, telas com título laranja são telas comuns a todos os mini apps,
@@ -286,8 +286,8 @@ export function AppDocPage() {
               onStatus={(storyId, status) =>
                 patchStory.mutate({ id: storyId, status })
               }
-              onUpload={(storyId, form) =>
-                addRecording.mutate({ storyId, form })
+              onUpload={(sectionId, form) =>
+                addRecording.mutate({ sectionId, form })
               }
               onRemoveRecording={(id) => removeRecording.mutate(id)}
             />
@@ -427,7 +427,7 @@ function SectionStories({
   isEditing: boolean;
   uploadPending: boolean;
   onStatus: (storyId: string, status: StoryStatus) => void;
-  onUpload: (storyId: string, form: FormData) => void;
+  onUpload: (sectionId: string, form: FormData) => void;
   onRemoveRecording: (id: string) => void;
 }) {
   return (
@@ -440,7 +440,14 @@ function SectionStories({
       >
         {section.title}
       </h3>
-      <ul className="space-y-3">
+      <SectionMedia
+        recordings={section.recordings}
+        isEditing={isEditing}
+        pending={uploadPending}
+        onUpload={(form) => onUpload(section.id, form)}
+        onRemove={onRemoveRecording}
+      />
+      <ul className="mt-3 space-y-3">
         {section.stories.map((story) => (
           <li
             key={story.id}
@@ -475,13 +482,6 @@ function SectionStories({
                 {statusLabel[story.status]}
               </p>
             )}
-            <StoryMedia
-              story={story}
-              isEditing={isEditing}
-              pending={uploadPending}
-              onUpload={(form) => onUpload(story.id, form)}
-              onRemove={onRemoveRecording}
-            />
           </li>
         ))}
       </ul>
@@ -863,30 +863,32 @@ function ComparisonForm({
   );
 }
 
-function StoryMedia({
-  story,
+function SectionMedia({
+  recordings,
   isEditing,
   pending,
   onUpload,
   onRemove,
 }: {
-  story: Story;
+  recordings: Recording[];
   isEditing: boolean;
   pending: boolean;
   onUpload: (form: FormData) => void;
   onRemove: (id: string) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const hasMedia = story.recordings.length > 0;
+  const hasMedia = recordings.length > 0;
 
   if (!isEditing && !hasMedia) return null;
 
   return (
-    <div className="mt-3 border-t border-border pt-3">
-      {isEditing && !hasMedia ? (
-        <p className="mb-2 text-xs text-muted">Print ou vídeo desta história</p>
+    <div className="mt-3 rounded-lg border border-border p-3">
+      {isEditing ? (
+        <p className="mb-2 text-xs text-muted">
+          Um vídeo (ou print) cobrindo todas as histórias desta tela
+        </p>
       ) : null}
-      {story.recordings.map((recording) => (
+      {recordings.map((recording) => (
         <RecordingPreview
           key={recording.id}
           recording={recording}

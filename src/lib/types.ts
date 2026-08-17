@@ -7,7 +7,7 @@ export type LabelPlacement = "header" | "footer";
 
 export type Recording = {
   id: string;
-  storyId: string;
+  sectionId: string;
   kind: "image" | "video";
   url: string;
   originalName: string;
@@ -20,7 +20,6 @@ export type Story = {
   text: string;
   status: StoryStatus;
   notes: string;
-  recordings: Recording[];
 };
 
 export type Section = {
@@ -31,6 +30,7 @@ export type Section = {
   kind: SectionKind;
   order: number;
   stories: Story[];
+  recordings: Recording[];
 };
 
 export type Comparison = {

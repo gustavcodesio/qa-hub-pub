@@ -104,8 +104,8 @@ export const api = {
     }),
   deleteComparison: (id: string) =>
     request<AppDocument>(`/api/comparisons/${id}`, { method: "DELETE" }),
-  addRecording: (storyId: string, form: FormData) =>
-    request<AppDocument>(`/api/stories/${storyId}/recordings`, {
+  addRecording: (sectionId: string, form: FormData) =>
+    request<AppDocument>(`/api/sections/${sectionId}/recordings`, {
       method: "POST",
       body: form,
     }),

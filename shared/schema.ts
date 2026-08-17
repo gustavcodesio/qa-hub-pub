@@ -79,7 +79,8 @@ export const comparisonSchema = z.object({
 
 export const recordingSchema = z.object({
   id: z.string(),
-  storyId: z.string(),
+  sectionId: z.string().default(""),
+  storyId: z.string().optional(),
   kind: mediaKindSchema,
   url: z.string(),
   originalName: z.string(),

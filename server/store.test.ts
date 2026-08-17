@@ -1,4 +1,4 @@
-import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -264,6 +264,46 @@ describe("JsonStore", () => {
       expect(updated?.comparisons[0]?.figmaImage).toBe("/uploads/figma.png");
       expect(existsSync(path.join(uploads, "tf.png"))).toBe(false);
       expect(existsSync(path.join(uploads, "figma.png"))).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("anexa evidência à tela e migra gravação antiga da história", () => {
+    const { store, dir } = tmpStore();
+    try {
+      const created = store.createApp({
+        name: "Gratos",
+        slug: "gratos",
+        copyCommon: true,
+      });
+      const login = created!.sections.find((s) => s.title === "Login")!;
+      const attached = store.addRecording({
+        sectionId: login.id,
+        kind: "video",
+        url: "/uploads/login.mp4",
+        originalName: "login.mp4",
+      });
+      const loginAfter = attached?.sections.find((s) => s.id === login.id);
+      expect(loginAfter?.recordings).toHaveLength(1);
+      expect(loginAfter?.recordings[0]?.sectionId).toBe(login.id);
+
+      const dbPath = path.join(dir, "db.json");
+      const db = JSON.parse(readFileSync(dbPath, "utf8")) as {
+        recordings: Record<string, unknown>[];
+      };
+      db.recordings.push({
+        id: "old-rec",
+        storyId: login.stories[0]!.id,
+        kind: "video",
+        url: "/uploads/old.mp4",
+        originalName: "old.mp4",
+      });
+      writeFileSync(dbPath, `${JSON.stringify(db)}\n`);
+      const migrated = store.getAppDocument(created!.id);
+      const recs =
+        migrated?.sections.find((s) => s.id === login.id)?.recordings ?? [];
+      expect(recs.some((item) => item.id === "old-rec")).toBe(true);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

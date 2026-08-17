@@ -404,20 +404,20 @@ app.delete("/api/comparisons/:id", (req, res) => {
   res.json(doc);
 });
 
-app.post("/api/stories/:id/recordings", upload.single("file"), (req, res) => {
+app.post("/api/sections/:id/recordings", upload.single("file"), (req, res) => {
   try {
     if (!req.file) {
       res.status(400).json({ error: "Envie um arquivo." });
       return;
     }
     const doc = store.addRecording({
-      storyId: param(req.params.id),
+      sectionId: param(req.params.id),
       kind: mediaKind(req.file.mimetype),
       url: publicUrl(req.file.filename),
       originalName: req.file.originalname,
     });
     if (!doc) {
-      res.status(404).json({ error: "História não encontrada." });
+      res.status(404).json({ error: "Tela não encontrada." });
       return;
     }
     res.status(201).json(doc);

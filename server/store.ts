@@ -96,7 +96,26 @@ export class JsonStore {
 
   read(): Db {
     const raw = readFileSync(this.dbPath, "utf8");
-    return dbSchema.parse(JSON.parse(raw));
+    const db = dbSchema.parse(JSON.parse(raw));
+    if (this.migrateRecordingsToSections(db)) {
+      this.write(db);
+    }
+    return db;
+  }
+
+  /** Gravações antigas vinham da história; agora pertencem à tela. */
+  private migrateRecordingsToSections(db: Db): boolean {
+    let changed = false;
+    for (const rec of db.recordings) {
+      if (rec.sectionId) continue;
+      const story = rec.storyId
+        ? db.stories.find((item) => item.id === rec.storyId)
+        : undefined;
+      if (!story) continue;
+      rec.sectionId = story.sectionId;
+      changed = true;
+    }
+    return changed;
   }
 
   private write(db: Db): void {
@@ -157,12 +176,8 @@ export class JsonStore {
       )
       .map((section) => ({
         ...section,
-        stories: db.stories
-          .filter((st) => st.sectionId === section.id)
-          .map((story) => ({
-            ...story,
-            recordings: db.recordings.filter((r) => r.storyId === story.id),
-          })),
+        recordings: db.recordings.filter((r) => r.sectionId === section.id),
+        stories: db.stories.filter((st) => st.sectionId === section.id),
       }));
     const comparisons = db.comparisons
       .filter((c) => c.appId === appId)
@@ -360,17 +375,14 @@ export class JsonStore {
     const exists = db.apps.some((a) => a.id === appId);
     if (!exists) return false;
     const sectionIds = db.sections.filter((s) => s.appId === appId).map((s) => s.id);
-    const storyIds = db.stories
-      .filter((st) => sectionIds.includes(st.sectionId))
-      .map((st) => st.id);
-    for (const rec of db.recordings.filter((r) => storyIds.includes(r.storyId))) {
+    for (const rec of db.recordings.filter((r) => sectionIds.includes(r.sectionId))) {
       this.unlinkUpload(rec.url);
     }
     for (const cmp of db.comparisons.filter((c) => c.appId === appId)) {
       this.unlinkUpload(cmp.appImage);
       this.unlinkUpload(cmp.figmaImage);
     }
-    db.recordings = db.recordings.filter((r) => !storyIds.includes(r.storyId));
+    db.recordings = db.recordings.filter((r) => !sectionIds.includes(r.sectionId));
     db.stories = db.stories.filter((st) => !sectionIds.includes(st.sectionId));
     db.sections = db.sections.filter((s) => s.appId !== appId);
     db.comparisons = db.comparisons.filter((c) => c.appId !== appId);
@@ -426,11 +438,10 @@ export class JsonStore {
     const db = this.read();
     const section = db.sections.find((s) => s.id === sectionId);
     if (!section) return null;
-    const storyIds = db.stories.filter((st) => st.sectionId === sectionId).map((st) => st.id);
-    for (const rec of db.recordings.filter((r) => storyIds.includes(r.storyId))) {
+    for (const rec of db.recordings.filter((r) => r.sectionId === sectionId)) {
       this.unlinkUpload(rec.url);
     }
-    db.recordings = db.recordings.filter((r) => !storyIds.includes(r.storyId));
+    db.recordings = db.recordings.filter((r) => r.sectionId !== sectionId);
     db.stories = db.stories.filter((st) => st.sectionId !== sectionId);
     db.comparisons = db.comparisons.map((c) =>
       c.sectionId === sectionId ? { ...c, sectionId: null } : c,
@@ -478,10 +489,6 @@ export class JsonStore {
     if (!story) return null;
     const section = db.sections.find((s) => s.id === story.sectionId);
     if (!section) return null;
-    for (const rec of db.recordings.filter((r) => r.storyId === storyId)) {
-      this.unlinkUpload(rec.url);
-    }
-    db.recordings = db.recordings.filter((r) => r.storyId !== storyId);
     db.stories = db.stories.filter((s) => s.id !== storyId);
     this.write(db);
     return this.getAppDocument(section.appId);
@@ -571,19 +578,17 @@ export class JsonStore {
   }
 
   addRecording(input: {
-    storyId: string;
+    sectionId: string;
     kind: "image" | "video";
     url: string;
     originalName: string;
   }) {
     const db = this.read();
-    const story = db.stories.find((s) => s.id === input.storyId);
-    if (!story) return null;
-    const section = db.sections.find((s) => s.id === story.sectionId);
+    const section = db.sections.find((s) => s.id === input.sectionId);
     if (!section) return null;
     const recording: Recording = {
       id: id(),
-      storyId: input.storyId,
+      sectionId: input.sectionId,
       kind: input.kind,
       url: input.url,
       originalName: input.originalName,
@@ -597,9 +602,7 @@ export class JsonStore {
     const db = this.read();
     const recording = db.recordings.find((r) => r.id === recordingId);
     if (!recording) return null;
-    const story = db.stories.find((s) => s.id === recording.storyId);
-    if (!story) return null;
-    const section = db.sections.find((s) => s.id === story.sectionId);
+    const section = db.sections.find((s) => s.id === recording.sectionId);
     if (!section) return null;
     this.unlinkUpload(recording.url);
     db.recordings = db.recordings.filter((r) => r.id !== recordingId);
