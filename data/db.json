@@ -6,11 +6,13 @@
       "slug": "gratos",
       "folder": "gratos-app",
       "figmaUrl": "https://www.figma.com/design/BMqajT3cYRsuRlem37MkFF/Gratos?node-id=5-46&p=f&t=FntkO8zVdWkOGKjD-0",
-      "iosTestUrl": "",
-      "androidTestUrl": "",
+      "iosTestUrl": "https://appstoreconnect.apple.com/teams/c6b1752e-358a-4f1d-ab35-6ef6a7657bde/apps/6788112393/testflight/ios/a51d4b1a-c6e8-4969-87a7-14d93060ac8a",
+      "androidTestUrl": "https://play.google.com/apps/test/com.gratos.myapp/16",
       "notes": "Telas com título laranja são comuns a todos os mini-apps.",
       "requestedAdjustments": "",
-      "labels": [],
+      "labels": [
+        "Testes gb finalizado"
+      ],
       "createdAt": "2026-08-16T15:00:00.000Z"
     },
     {
@@ -23,7 +25,9 @@
       "androidTestUrl": "",
       "notes": "Login usa Pass ID, não e-mail.",
       "requestedAdjustments": "",
-      "labels": [],
+      "labels": [
+        "Testes gb finalizado"
+      ],
       "createdAt": "2026-08-16T15:00:00.000Z"
     },
     {
@@ -50,7 +54,7 @@
       "notes": "",
       "requestedAdjustments": "",
       "labels": [
-        "splash screen errada"
+        "Testes gb finalizado"
       ],
       "createdAt": "2026-08-16T17:55:45.394Z"
     },
@@ -64,7 +68,9 @@
       "androidTestUrl": "",
       "notes": "",
       "requestedAdjustments": "",
-      "labels": [],
+      "labels": [
+        "Testes gb finalizado"
+      ],
       "createdAt": "2026-08-16T17:55:45.394Z"
     },
     {
@@ -77,7 +83,9 @@
       "androidTestUrl": "",
       "notes": "",
       "requestedAdjustments": "",
-      "labels": [],
+      "labels": [
+        "Testes gb finalizado"
+      ],
       "createdAt": "2026-08-16T17:55:45.394Z"
     },
     {
@@ -104,7 +112,8 @@
       "notes": "",
       "requestedAdjustments": "",
       "labels": [
-        "splash screen errada"
+        "splash screen errada",
+        "Testes gb finalizado"
       ],
       "createdAt": "2026-08-16T17:55:45.394Z"
     },
@@ -1485,7 +1494,7 @@
       "sectionId": "gratos-paywall",
       "code": "PW1",
       "text": "O usuário deve conseguir ver o paywall e assinar.",
-      "status": "pending",
+      "status": "passed",
       "notes": ""
     },
     {
@@ -1525,7 +1534,7 @@
       "sectionId": "gratos-perfil",
       "code": "P1",
       "text": "O usuário deve conseguir ver nome, e-mail e foto.",
-      "status": "pending",
+      "status": "passed",
       "notes": ""
     },
     {
@@ -1533,7 +1542,7 @@
       "sectionId": "gratos-perfil",
       "code": "P2",
       "text": "O usuário deve conseguir alterar o nome e o e-mail e salvar.",
-      "status": "pending",
+      "status": "passed",
       "notes": ""
     },
     {
@@ -1581,7 +1590,7 @@
       "sectionId": "gratos-perfil",
       "code": "P8",
       "text": "Sem sessão, o usuário deve ser redirecionado para /login.",
-      "status": "pending",
+      "status": "passed",
       "notes": ""
     },
     {
@@ -6977,7 +6986,7 @@
       "appId": "gratos",
       "sectionId": "gratos-login",
       "platform": "ios",
-      "appImage": "/uploads/47e8f2a1-6d70-4100-ab99-590c0e575f26.png",
+      "appImage": "/uploads/85534c24-2a53-43f7-bd9d-d31244c83100.jpeg",
       "figmaImage": "/uploads/a6c03689-7d6f-4715-8da7-f1265918de0d.png",
       "listState": null,
       "drawerLabel": null
@@ -6997,7 +7006,7 @@
       "appId": "gratos",
       "sectionId": "gratos-humor",
       "platform": "ios",
-      "appImage": "/uploads/c916a30f-ca91-4654-afb9-4ab071205015.png",
+      "appImage": "/uploads/f802a978-a07e-4a94-9758-ad64fe2364d9.jpeg",
       "figmaImage": "/uploads/a71116d7-e9af-4733-a66d-d1b40cec5760.png",
       "listState": "filled",
       "drawerLabel": null
@@ -7017,7 +7026,7 @@
       "appId": "gratos",
       "sectionId": "gratos-add",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/245361bc-45c8-469a-8381-f53427ef29a6.jpeg",
       "figmaImage": "/uploads/86248fa4-c6fd-4c4c-bb4a-b2c97718c55a.png",
       "listState": null,
       "drawerLabel": null
@@ -7047,7 +7056,7 @@
       "appId": "gratos",
       "sectionId": "gratos-pin",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/bf1b7f47-2709-4ee2-bb10-cc2b89252aa2.jpeg",
       "figmaImage": "/uploads/f40da5f5-dc45-4347-89f7-f478690db63d.png",
       "listState": null,
       "drawerLabel": "Crie sua senha de acesso"
@@ -7059,16 +7068,6 @@
       "platform": "android",
       "appImage": "",
       "figmaImage": "/uploads/f40da5f5-dc45-4347-89f7-f478690db63d.png",
-      "listState": null,
-      "drawerLabel": "Crie sua senha de acesso"
-    },
-    {
-      "id": "4582af09-c9f9-41a0-a83b-51ec19220562",
-      "appId": "gratos",
-      "sectionId": "gratos-pin",
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/c1ed8641-5af0-4f0c-9278-17592f20a100.png",
       "listState": null,
       "drawerLabel": "Crie sua senha de acesso"
     },
@@ -7087,7 +7086,7 @@
       "appId": "gratos",
       "sectionId": "gratos-pin",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/fdb5711b-f66c-4f18-b5f2-8f7ef3e2e342.png",
       "figmaImage": "/uploads/b29828cb-f8d8-4d05-b23b-d383cf6d6bd0.png",
       "listState": null,
       "drawerLabel": "Alterar senha"
@@ -7107,7 +7106,7 @@
       "appId": "gratos",
       "sectionId": "gratos-pin",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/66bebc18-defd-4ddb-9677-92622fb4c1a6.jpeg",
       "figmaImage": "/uploads/e983645d-a652-446f-8169-531059429fc1.png",
       "listState": null,
       "drawerLabel": null
@@ -8443,16 +8442,6 @@
       "drawerLabel": "Hora do Remédio"
     },
     {
-      "id": "26c55b97-a400-445a-8ce7-21d023bd1162",
-      "appId": "equivale",
-      "sectionId": "equivale-calculadora",
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/3bc35be7-1811-4c94-b7c0-537529a3523c.png",
-      "listState": null,
-      "drawerLabel": null
-    },
-    {
       "id": "45417879-cab5-44e9-b74c-0a234b756d9a",
       "appId": "equivale",
       "sectionId": "equivale-calculadora",
@@ -8467,7 +8456,7 @@
       "appId": "equivale",
       "sectionId": "equivale-conversor",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/55ab96d9-3356-4b6a-9826-2235f8b162a9.jpeg",
       "figmaImage": "/uploads/3413cd40-b6b4-4de6-8245-1684c5e25c41.png",
       "listState": null,
       "drawerLabel": null
@@ -8487,7 +8476,7 @@
       "appId": "equivale",
       "sectionId": "equivale-categorias",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/70ade48e-a1b9-43fc-946d-981b5ded3f2b.jpeg",
       "figmaImage": "/uploads/d338d541-1a00-46c9-b162-0d1dfa4f9ecd.png",
       "listState": null,
       "drawerLabel": null
@@ -8507,7 +8496,7 @@
       "appId": "equivale",
       "sectionId": "equivale-categorias",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/acc50e4d-7fd1-4976-83b2-b8a9c2e34002.jpeg",
       "figmaImage": "/uploads/5f39e4c0-1e40-4bc6-a598-94504c86ffc3.png",
       "listState": null,
       "drawerLabel": "Selecionar unidade"
@@ -8527,7 +8516,7 @@
       "appId": "equivale",
       "sectionId": "equivale-login",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/f045be0e-9226-4fe2-923e-f663e18b962f.jpeg",
       "figmaImage": "/uploads/e79ee331-a942-447e-9b86-02f75a23c827.png",
       "listState": null,
       "drawerLabel": null
@@ -8541,16 +8530,6 @@
       "figmaImage": "/uploads/e79ee331-a942-447e-9b86-02f75a23c827.png",
       "listState": null,
       "drawerLabel": null
-    },
-    {
-      "id": "8220e702-7900-4491-b23b-8d16e6039fbc",
-      "appId": "equivale",
-      "sectionId": "equivale-perfil",
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/7451bc12-6120-49f9-bbd0-bfa5120e0c4c.png",
-      "listState": null,
-      "drawerLabel": "Alterar senha"
     },
     {
       "id": "c858fc3d-043e-4ee1-bbb3-4b7fe9a1a229",
@@ -8567,7 +8546,7 @@
       "appId": "equivale",
       "sectionId": "equivale-perfil",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/8ca06d80-4a19-4f6e-aaac-e8687daf2445.jpeg",
       "figmaImage": "/uploads/52e9681e-39a7-46cc-aa63-f9324e7acd01.png",
       "listState": null,
       "drawerLabel": null
@@ -8687,7 +8666,7 @@
       "appId": "flowy",
       "sectionId": "flowy-login",
       "platform": "ios",
-      "appImage": "/uploads/e6bdbfb1-efd3-4f9e-8b10-20cee57e9bd3.png",
+      "appImage": "/uploads/f2b5ff52-f06e-4a07-bdb8-1fdf31550bf0.jpeg",
       "figmaImage": "/uploads/ea49360a-1804-40ba-bfa1-9ab95b98d9f8.png",
       "listState": null,
       "drawerLabel": null
@@ -8699,16 +8678,6 @@
       "platform": "android",
       "appImage": "",
       "figmaImage": "/uploads/ea49360a-1804-40ba-bfa1-9ab95b98d9f8.png",
-      "listState": null,
-      "drawerLabel": null
-    },
-    {
-      "id": "d6f2def2-9991-449a-a9ca-fab63fbee931",
-      "appId": "flowy",
-      "sectionId": "flowy-inicio",
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/6cd1e465-400f-4642-9d05-cb3141390e92.png",
       "listState": null,
       "drawerLabel": null
     },
@@ -8727,7 +8696,7 @@
       "appId": "flowy",
       "sectionId": "flowy-inicio",
       "platform": "ios",
-      "appImage": "/uploads/3cd55031-a490-4c5f-b43a-2b2f4e57c29d.png",
+      "appImage": "/uploads/258ba7df-9c82-417f-b5d4-a508776c2e8e.jpeg",
       "figmaImage": "/uploads/69a46f2f-a330-4ad4-b545-9a6a47c3c33c.png",
       "listState": null,
       "drawerLabel": null
@@ -8787,7 +8756,7 @@
       "appId": "flowy",
       "sectionId": "flowy-inicio",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/03537ce9-8678-4835-b015-6aaa5f18602b.jpeg",
       "figmaImage": "/uploads/d955fb76-1d7c-4b45-a0f3-93d5340b917a.png",
       "listState": null,
       "drawerLabel": null
@@ -8807,7 +8776,7 @@
       "appId": "flowy",
       "sectionId": "flowy-inicio",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/866b65ab-4d57-4850-b91a-836579618413.jpeg",
       "figmaImage": "/uploads/c9433a23-d813-4ce6-ae51-7882d5f20127.png",
       "listState": null,
       "drawerLabel": null
@@ -8827,7 +8796,7 @@
       "appId": "flowy",
       "sectionId": "flowy-inicio",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/a181ae4e-f376-4120-9edb-369552abc337.jpeg",
       "figmaImage": "/uploads/cfbaafbd-0e26-49e5-8f64-4f2cce8fbee7.png",
       "listState": null,
       "drawerLabel": null
@@ -8847,7 +8816,7 @@
       "appId": "flowy",
       "sectionId": "flowy-inicio",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/89a19639-0548-4a5f-be33-07af2d031f23.jpeg",
       "figmaImage": "/uploads/fa191f58-8b65-4c34-9ef4-c4ea448d11ce.png",
       "listState": null,
       "drawerLabel": null
@@ -8867,7 +8836,7 @@
       "appId": "flowy",
       "sectionId": "flowy-perfil",
       "platform": "ios",
-      "appImage": "/uploads/447963b0-3863-43fa-97fa-f70f91845ca0.png",
+      "appImage": "/uploads/76ea0bcc-bc47-4faa-ab5e-f682eef4da4f.jpeg",
       "figmaImage": "/uploads/fa73cd6a-27fc-4e60-a4d2-a681aaac00e4.png",
       "listState": null,
       "drawerLabel": null
@@ -9327,7 +9296,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-foco",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/208d9872-2704-463f-a410-2b557f45ffe7.jpeg",
       "figmaImage": "/uploads/743b356e-5e59-4913-bba1-8fd057200308.png",
       "listState": null,
       "drawerLabel": "Configurações"
@@ -9347,7 +9316,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-foco",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/be013183-d863-41f8-8f5b-3f7ec056c069.jpeg",
       "figmaImage": "/uploads/2f7c3ad9-780d-45ac-8aa2-f5d510a66b81.png",
       "listState": null,
       "drawerLabel": null
@@ -9367,7 +9336,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-foco",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/7a67592e-1a99-4818-abc0-994ffc8313f0.jpeg",
       "figmaImage": "/uploads/a9778591-5bcd-4125-9ae2-ee423e312f5c.png",
       "listState": null,
       "drawerLabel": null
@@ -9387,7 +9356,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-foco",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/f784fd95-1823-45b8-89ab-c963670e02d8.jpeg",
       "figmaImage": "/uploads/c962f992-0496-4a09-95ee-f4693f9701d0.png",
       "listState": null,
       "drawerLabel": null
@@ -9407,7 +9376,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-login",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/4760b45f-c366-49c4-b990-b918109ede8f.jpeg",
       "figmaImage": "/uploads/0b1d5dfe-66a7-45ca-af75-8c60fc7b95ac.png",
       "listState": null,
       "drawerLabel": null
@@ -9427,7 +9396,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-perfil",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/65e53a95-d738-4cbf-96ff-140696369888.jpeg",
       "figmaImage": "/uploads/fa5fdd10-b8fa-425e-8a10-cab6077d54e4.png",
       "listState": null,
       "drawerLabel": null
@@ -9447,7 +9416,7 @@
       "appId": "pomodoro",
       "sectionId": "pomodoro-relatorio",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/5e10ba65-8027-4995-b68a-58b33f7e1864.jpeg",
       "figmaImage": "/uploads/e421853b-e6ff-4b16-9e87-0951daea37f1.png",
       "listState": null,
       "drawerLabel": null
@@ -9823,16 +9792,6 @@
       "drawerLabel": null
     },
     {
-      "id": "f179f19a-d906-4075-b3a4-381d441344dc",
-      "appId": "sereno",
-      "sectionId": "sereno-perfil",
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/a729667f-cfec-4977-ad71-c4a61388b46d.png",
-      "listState": null,
-      "drawerLabel": null
-    },
-    {
       "id": "1dd783ee-8253-4c9c-9ec8-8e71fc5bcb45",
       "appId": "sereno",
       "sectionId": "sereno-perfil",
@@ -9863,16 +9822,6 @@
       "drawerLabel": null
     },
     {
-      "id": "5f148ced-aafa-4ac2-aa82-31a4e80274cd",
-      "appId": "sereno",
-      "sectionId": null,
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/cc89182f-2a4a-4fda-90f0-f71900da0ba1.png",
-      "listState": null,
-      "drawerLabel": null
-    },
-    {
       "id": "0c4c7cd9-e9b7-4975-9389-366b0d849da9",
       "appId": "sereno",
       "sectionId": null,
@@ -9887,7 +9836,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-assinaturas",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/a7be8a2c-84e8-4917-bd02-395e48cb1c2b.jpeg",
       "figmaImage": "/uploads/59d1ae1b-8581-42bb-af7e-56025dbbe34f.png",
       "listState": null,
       "drawerLabel": "Adicionar assinatura"
@@ -9907,7 +9856,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-assinaturas",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/aaa5aef2-f308-43b0-8369-5cd836448389.jpeg",
       "figmaImage": "/uploads/d832e45d-079e-4fb4-9ade-1e35f3364245.png",
       "listState": null,
       "drawerLabel": "Cadastrar do zero"
@@ -9927,7 +9876,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-assinaturas",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/0f378710-3344-4c46-a30b-bc7917da10ab.jpeg",
       "figmaImage": "/uploads/117cd985-cd00-4456-beb9-2753427ae9bf.png",
       "listState": null,
       "drawerLabel": "Adicionar assinatura"
@@ -9947,7 +9896,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-assinaturas",
       "platform": "ios",
-      "appImage": "/uploads/132f7dc9-2ad6-483a-ace6-748b81b8c637.png",
+      "appImage": "/uploads/c071c9d6-fc76-40d6-a617-9a93a8eb255c.jpeg",
       "figmaImage": "/uploads/deaaa003-5aca-4b95-8da2-a0ad72ee4303.png",
       "listState": "filled",
       "drawerLabel": null
@@ -9987,7 +9936,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-perfil",
       "platform": "ios",
-      "appImage": "/uploads/200e3a3f-9c76-46f9-b1f5-0cad35678a8d.png",
+      "appImage": "/uploads/1c02779b-8c12-49fd-8937-1839cc5990bd.jpeg",
       "figmaImage": "/uploads/32aeeb0e-1957-4405-8816-ad9e9d009d9f.png",
       "listState": null,
       "drawerLabel": null
@@ -10007,7 +9956,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-assinaturas",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/afafb926-022a-4c52-9fa3-1973bf7dede2.jpeg",
       "figmaImage": "/uploads/67e3da23-ffb2-42d8-9829-0bdcaf8c035f.png",
       "listState": "empty",
       "drawerLabel": null
@@ -10027,7 +9976,7 @@
       "appId": "karrin",
       "sectionId": "karrin-produtos",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/5e3593b7-d548-482f-81dd-39ce3bddc55a.jpeg",
       "figmaImage": "/uploads/7c749bce-1489-4790-87d8-56105b2729e0.png",
       "listState": "empty",
       "drawerLabel": "Adicionar produto"
@@ -10067,7 +10016,7 @@
       "appId": "karrin",
       "sectionId": "karrin-lista",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/4cf5a612-65df-4d23-919a-32cc4f688308.jpeg",
       "figmaImage": "/uploads/8cc3f6bf-bb3b-40c4-92fc-be8edd615e23.png",
       "listState": null,
       "drawerLabel": "Resumo da compra"
@@ -10083,32 +10032,12 @@
       "drawerLabel": "Resumo da compra"
     },
     {
-      "id": "264fa463-1b09-4b9d-a795-fe641a1f12de",
-      "appId": "karrin",
-      "sectionId": "karrin-lista",
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/dfa9db5e-35b7-4218-8110-19606e5e3316.png",
-      "listState": "filled",
-      "drawerLabel": null
-    },
-    {
       "id": "10481379-af9b-4c4c-aae0-6a60da472632",
       "appId": "karrin",
       "sectionId": "karrin-lista",
       "platform": "android",
       "appImage": "",
       "figmaImage": "/uploads/dfa9db5e-35b7-4218-8110-19606e5e3316.png",
-      "listState": "filled",
-      "drawerLabel": null
-    },
-    {
-      "id": "04911731-ae54-4830-aadd-404d3851df51",
-      "appId": "karrin",
-      "sectionId": "karrin-lista",
-      "platform": "ios",
-      "appImage": "/uploads/13c80bd0-77ae-42ce-babb-74ee5dc71c24.png",
-      "figmaImage": "/uploads/fbcc8c40-fbb2-4f63-ba3c-6014f7e4af1c.png",
       "listState": "filled",
       "drawerLabel": null
     },
@@ -10167,7 +10096,7 @@
       "appId": "karrin",
       "sectionId": "karrin-perfil",
       "platform": "ios",
-      "appImage": "/uploads/a939588e-be4a-4968-a58f-2d6506a65863.png",
+      "appImage": "/uploads/5dab4973-fc26-4012-ba42-4a0f1f584787.jpeg",
       "figmaImage": "/uploads/37bddf5e-aef1-402c-8e77-ad84ed894596.png",
       "listState": null,
       "drawerLabel": null
@@ -10207,7 +10136,7 @@
       "appId": "karrin",
       "sectionId": "karrin-home",
       "platform": "ios",
-      "appImage": "",
+      "appImage": "/uploads/352a13c4-3187-4b4e-96c4-4afd5ca7f42c.jpeg",
       "figmaImage": "/uploads/34811c0a-a6a0-4b89-91a3-cbf02cee6a34.png",
       "listState": "empty",
       "drawerLabel": null
@@ -10443,16 +10372,6 @@
       "drawerLabel": "Nova tarefa"
     },
     {
-      "id": "1eeba115-d890-4501-97db-acf3e4dbc204",
-      "appId": "tarefas",
-      "sectionId": null,
-      "platform": "ios",
-      "appImage": "",
-      "figmaImage": "/uploads/2990a5bf-3d56-40b9-9630-ebeac7918dc3.png",
-      "listState": null,
-      "drawerLabel": null
-    },
-    {
       "id": "c152840b-29f0-4a6c-8364-65558074035f",
       "appId": "tarefas",
       "sectionId": null,
@@ -10467,7 +10386,7 @@
       "appId": "gratos",
       "sectionId": "gratos-perfil",
       "platform": "ios",
-      "appImage": "/uploads/07240a62-dcfd-4949-8587-a64d59bed230.png",
+      "appImage": "/uploads/755f9ca4-12ef-4f08-a584-a0b143349c43.png",
       "figmaImage": "/uploads/4b6ceac9-16fd-4ed8-9da5-b12af99ca968.png",
       "listState": null,
       "drawerLabel": null
@@ -10477,7 +10396,7 @@
       "appId": "karrin",
       "sectionId": "karrin-lista",
       "platform": "ios",
-      "appImage": "/uploads/2a4e0c10-c435-4355-ace0-68e54d6824e9.png",
+      "appImage": "/uploads/f1a9946e-b4d7-45eb-a213-8194407870d5.jpeg",
       "figmaImage": "/uploads/fbcc8c40-fbb2-4f63-ba3c-6014f7e4af1c.png",
       "listState": "empty",
       "drawerLabel": null
@@ -10487,7 +10406,7 @@
       "appId": "subtracker",
       "sectionId": "subtracker-login",
       "platform": "ios",
-      "appImage": "/uploads/8c1433e2-4ca8-4617-9e1c-6e4b9b6e41d7.png",
+      "appImage": "/uploads/710ac973-702d-4780-b42e-0aeb340e29aa.jpeg",
       "figmaImage": "",
       "listState": null,
       "drawerLabel": null
@@ -10501,15 +10420,68 @@
       "figmaImage": "",
       "listState": "empty",
       "drawerLabel": null
+    },
+    {
+      "id": "de0013f7-932d-4dc1-92e7-93e7d0d46606",
+      "appId": "gratos",
+      "sectionId": "gratos-home",
+      "platform": "ios",
+      "appImage": "/uploads/b197f0de-033a-4c51-9446-1314a8cf7336.png",
+      "figmaImage": "",
+      "listState": "filled",
+      "drawerLabel": null
     }
   ],
   "recordings": [
     {
       "id": "91ed7304-8ee7-4720-bfde-bc7af8428eb1",
+      "sectionId": "gratos-login",
       "storyId": "gratos-L1",
       "kind": "video",
       "url": "/uploads/986ac67f-1322-4983-aaf7-cd397d3efdbe.mp4",
       "originalName": "WhatsApp Video 2026-08-16 at 12.48.16.mp4"
+    },
+    {
+      "id": "b33f9c9b-2063-4dd2-8c32-246f53bcf8f4",
+      "sectionId": "gratos-login",
+      "kind": "video",
+      "url": "/uploads/4a1b5fcc-067f-4340-b2d6-c950070aaf80.mp4",
+      "originalName": "WhatsApp Video 2026-08-18 at 10.28.44.mp4"
+    },
+    {
+      "id": "cf2b0c7d-e28a-4ee1-b76f-6c2d45c0bf85",
+      "sectionId": "gratos-cadastro",
+      "kind": "video",
+      "url": "/uploads/3bd14c45-e41b-4464-9684-221ecb1c2c71.mp4",
+      "originalName": "WhatsApp Video 2026-08-18 at 10.28.48.mp4"
+    },
+    {
+      "id": "b46742bd-e3c3-463f-8fb2-1448efc9d784",
+      "sectionId": "gratos-perfil",
+      "kind": "video",
+      "url": "/uploads/e6f12a77-552b-4e13-8015-6ec9fcd8fdbf.mp4",
+      "originalName": "WhatsApp Video 2026-08-18 at 10.28.48 (1).mp4"
+    },
+    {
+      "id": "4ded057e-12e5-48c9-bac2-5e08bf4e8bef",
+      "sectionId": "gratos-humor",
+      "kind": "video",
+      "url": "/uploads/1fa2ac55-eb8b-4826-8f0e-cc1cd6e1f036.mp4",
+      "originalName": "WhatsApp Video 2026-08-18 at 13.26.15.mp4"
+    },
+    {
+      "id": "b18d682b-b03b-4395-9d1b-57da0e025904",
+      "sectionId": "gratos-home",
+      "kind": "video",
+      "url": "/uploads/03e1eecb-de5a-4d54-be09-efcec729e53e.mp4",
+      "originalName": "WhatsApp Video 2026-08-18 at 13.27.26.mp4"
+    },
+    {
+      "id": "298b70c2-1ac3-48af-b773-e29c9e615981",
+      "sectionId": "gratos-add",
+      "kind": "video",
+      "url": "/uploads/14c00679-b10c-4ab8-bdae-c3e2bb481376.mp4",
+      "originalName": "WhatsApp Video 2026-08-18 at 13.27.26.mp4"
     }
   ],
   "labelCatalog": [
